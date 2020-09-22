@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+    
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.dataSource = self
@@ -27,11 +28,10 @@ class ViewController: UIViewController {
         let layout = collectionView.collectionViewLayout as? CustomCollectionViewLayout
         layout?.delegate = self
     }
-
     
 }
 
-//MARK: UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -39,6 +39,7 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCellCollectionViewCell
         
         cell.layer.cornerRadius = cell.frame.width / 2
@@ -47,10 +48,12 @@ extension ViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
 }
 
-//MARK: UICollectionViewDelegate
+//MARK: - UICollectionViewDelegate
 extension ViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
@@ -62,10 +65,12 @@ extension ViewController: UICollectionViewDelegate {
         }, completion: nil)
         
     }
+    
 }
 
-
+// MARK: - CustomCollectionViewDelegate
 extension ViewController: CustomCollectionViewDelegate {
+    
     func theNumberOfItemsInCollectionView() -> Int {
         return numbers.count 
     }

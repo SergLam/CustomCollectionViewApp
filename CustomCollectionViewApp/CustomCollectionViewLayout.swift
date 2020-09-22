@@ -9,16 +9,21 @@
 import UIKit
 
 protocol CustomCollectionViewDelegate: class {
+    
      func theNumberOfItemsInCollectionView() -> Int
+    
 }
 
 extension CustomCollectionViewDelegate {
+    
     func heightForContentInItem(inCollectionView collectionView: UICollectionView, at indexPath: IndexPath) -> CGFloat {
         return 0
     }
+    
 }
 
-class CustomCollectionViewLayout: UICollectionViewLayout {
+final class CustomCollectionViewLayout: UICollectionViewLayout {
+    
     fileprivate var numberOfColumns = 3
     fileprivate var cellPadding: CGFloat = 6
     fileprivate let cellHeight: CGFloat = 150
